@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLEARTHINK - Multi-Agent Decision Making</title>
+    <meta name="description" content="Think clearly, decide wisely with AI-powered decision analysis">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo">
+                <span class="logo-icon">🧠</span>
+                <h1>CLEARTHINK</h1>
+            </div>
+            <p class="tagline">Think clearly, decide wisely</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-card">
+                    <h2>What decision are you facing?</h2>
+                    <p class="input-hint">Describe your situation, dilemma, or choice. Be as detailed as you'd like.</p>
+                    <textarea id="decision-input"
+                        placeholder="e.g., I'm considering leaving my stable job to start my own business. I have savings for about 6 months, a family to support, and an idea I'm passionate about..."
+                        rows="6"></textarea>
+                    <div class="input-footer">
+                        <span class="char-count"><span id="char-count">0</span> characters</span>
+                        <button id="analyze-btn" class="btn-primary">
+                            <span class="btn-text">Analyze My Decision</span>
+                            <span class="btn-icon">→</span>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Use Cases -->
+            <section class="use-cases" id="use-cases">
+                <h3>What can CLEARTHINK help with?</h3>
+                <div class="use-case-grid">
+                    <div class="use-case-item"
+                        data-example="Should I change careers from engineering to product management? I've been an engineer for 5 years and feel ready for change.">
+                        <span class="use-case-icon">💼</span>
+                        <span>Career Decisions</span>
+                    </div>
+                    <div class="use-case-item"
+                        data-example="I have a startup idea for an AI-powered fitness app. Should I pursue it full-time or keep working on it as a side project?">
+                        <span class="use-case-icon">🚀</span>
+                        <span>Startup Ideas</span>
+                    </div>
+                    <div class="use-case-item"
+                        data-example="Should I invest my savings in real estate or keep it in index funds? I have $50k saved and am thinking long-term.">
+                        <span class="use-case-icon">💰</span>
+                        <span>Financial Choices</span>
+                    </div>
+                    <div class="use-case-item"
+                        data-example="We're deciding whether to move to a new city for my partner's job opportunity. It would mean leaving our support network but gaining better career prospects.">
+                        <span class="use-case-icon">❤️</span>
+                        <span>Relationship Decisions</span>
+                    </div>
+                    <div class="use-case-item"
+                        data-example="Should we pivot our product from B2C to B2B? We have traction but monetization is challenging.">
+                        <span class="use-case-icon">📦</span>
+                        <span>Product Decisions</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Loading State -->
+            <section class="loading-section hidden" id="loading-section">
+                <div class="loading-card">
+                    <div class="loading-spinner"></div>
+                    <h3 id="loading-agent">Analyzing your decision...</h3>
+                    <div class="progress-bar">
+                        <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <p class="loading-hint" id="loading-hint">Starting analysis...</p>
+                </div>
+            </section>
+
+            <!-- Results Section -->
+            <section class="results-section hidden" id="results-section">
+                <div class="results-header">
+                    <h2>Analysis Complete</h2>
+                    <button id="new-analysis-btn" class="btn-secondary">
+                        <span>← New Analysis</span>
+                    </button>
+                </div>
+
+                <!-- Agent Results will be inserted here -->
+                <div class="agent-results" id="agent-results"></div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Made with 🧠 by CLEARTHINK • Powered by AI</p>
+        </footer>
+    </div>
+
+    <script src="/static/app.js"></script>
+</body>
+
+</html>
