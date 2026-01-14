@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 
 <head>
     <meta charset="UTF-8">
@@ -16,11 +16,20 @@
     <div class="app-container">
         <!-- Header -->
         <header class="header">
-            <div class="logo">
-                <span class="logo-icon">🧠</span>
-                <h1>CLEARTHINK</h1>
+            <div class="header-top">
+                <div class="logo">
+                    <span class="logo-icon">🧠</span>
+                    <h1>CLEARTHINK</h1>
+                </div>
+                <div class="header-actions">
+                    <button id="theme-toggle" class="btn-icon-only" title="Toggle dark mode">
+                        <span class="theme-icon-light">🌙</span>
+                        <span class="theme-icon-dark">☀️</span>
+                    </button>
+                </div>
             </div>
             <p class="tagline">Think clearly, decide wisely</p>
+            <p class="shortcut-hint">Press <kbd>Ctrl</kbd> + <kbd>Enter</kbd> to analyze</p>
         </header>
 
         <!-- Main Content -->
@@ -75,13 +84,30 @@
                 </div>
             </section>
 
+            <!-- Decision History -->
+            <section class="history-section hidden" id="history-section">
+                <h3>Recent Decisions</h3>
+                <div class="history-list" id="history-list"></div>
+                <button id="clear-history-btn" class="btn-text">Clear History</button>
+            </section>
+
             <!-- Loading State -->
             <section class="loading-section hidden" id="loading-section">
                 <div class="loading-card">
-                    <div class="loading-spinner"></div>
+                    <div class="loading-brain">
+                        <span class="brain-pulse">🧠</span>
+                    </div>
                     <h3 id="loading-agent">Analyzing your decision...</h3>
                     <div class="progress-bar">
                         <div class="progress-fill" id="progress-fill"></div>
+                    </div>
+                    <div class="agent-steps">
+                        <div class="agent-step" data-step="1"><span>🎯</span> Problem Framing</div>
+                        <div class="agent-step" data-step="2"><span>💡</span> Options</div>
+                        <div class="agent-step" data-step="3"><span>🔍</span> Assumptions</div>
+                        <div class="agent-step" data-step="4"><span>🔮</span> Consequences</div>
+                        <div class="agent-step" data-step="5"><span>🧠</span> Biases</div>
+                        <div class="agent-step" data-step="6"><span>✅</span> Summary</div>
                     </div>
                     <p class="loading-hint" id="loading-hint">Starting analysis...</p>
                 </div>
@@ -91,21 +117,47 @@
             <section class="results-section hidden" id="results-section">
                 <div class="results-header">
                     <h2>Analysis Complete</h2>
-                    <button id="new-analysis-btn" class="btn-secondary">
-                        <span>← New Analysis</span>
-                    </button>
+                    <div class="results-actions">
+                        <button id="export-md-btn" class="btn-icon-text" title="Export as Markdown">
+                            <span>📄</span> Export
+                        </button>
+                        <button id="copy-all-btn" class="btn-icon-text" title="Copy all results">
+                            <span>📋</span> Copy All
+                        </button>
+                        <button id="new-analysis-btn" class="btn-secondary">
+                            <span>← New Analysis</span>
+                        </button>
+                    </div>
                 </div>
 
                 <!-- Agent Results will be inserted here -->
                 <div class="agent-results" id="agent-results"></div>
+
+                <!-- Follow-up Section -->
+                <div class="followup-section">
+                    <h3>Have a follow-up question?</h3>
+                    <div class="followup-input-wrapper">
+                        <input type="text" id="followup-input"
+                            placeholder="Ask a clarifying question about this analysis...">
+                        <button id="followup-btn" class="btn-primary">Ask</button>
+                    </div>
+                </div>
             </section>
         </main>
 
         <!-- Footer -->
         <footer class="footer">
             <p>Made with 🧠 by CLEARTHINK • Powered by AI</p>
+            <div class="footer-links">
+                <a href="#" id="show-history-link">History</a>
+                <span>•</span>
+                <a href="/docs" target="_blank">API Docs</a>
+            </div>
         </footer>
     </div>
+
+    <!-- Toast notification container -->
+    <div id="toast-container"></div>
 
     <script src="/static/app.js"></script>
 </body>
