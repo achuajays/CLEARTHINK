@@ -40,7 +40,7 @@ flowchart TB
     end
 
     subgraph LLM["🤖 LLM Backend"]
-        Groq["Groq API<br/>llama-3.3-70b"]
+        Groq["Groq API<br/>meta-llama/llama-4-scout-17b-16e-instruct"]
     end
 
     subgraph Output["📊 Results"]
